@@ -17,3 +17,17 @@
 
 .date{
 }
+
+.dropdown{
+  background-color: transparent;
+  border-width: 1px;
+}
+
+.DropdownMenu{
+
+}
+
+.DropdownImage{
+  width: 5vh;
+  height: 2.5vh;
+}

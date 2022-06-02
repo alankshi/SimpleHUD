@@ -1,0 +1,9 @@
+Add Settings menu for color, font, format, etc.
+Make weather look better
+Add options to put links to frequent pages maybe?
+Comment
+Optimize Clock because its very inefficient right now
+
+
+
+Add AM / PM support - DONE

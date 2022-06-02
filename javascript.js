@@ -5,11 +5,23 @@ function Get(id){
     return document.getElementById(id);
 }
 
+function Log(text){
+  console.log(text);
+}
+
 function UpdateClock(){
     var curr = new Date();
     var hours = curr.getHours().toString();
     var minutes = curr.getMinutes().toString();
     var seconds = curr.getSeconds().toString();
+
+    if(parseInt() % 12 != hours){
+      Get("M").innerHTML = "PM";
+      hours -= 12;
+    }
+    else{
+      Get("M").innerHTMl = "AM";
+    }
 
     if(seconds.length == 1){
         seconds = '0' + seconds;
@@ -31,7 +43,6 @@ function UpdateDate(){
 
 function GeoSuccess(pos){
     coords = [pos.coords.latitude.toString(), pos.coords.longitude.toString()];
-    //Get("weather").innerHTML = coords;
 
     fetch("https://api.weather.gov/points/" + coords[0] + ',' + coords[1], {method : "GET"})
         .then(function(response){
