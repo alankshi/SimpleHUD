@@ -16,12 +16,18 @@
                 </span>
             </div>
         </div>
-        <div class = "WeatherStuff" id = "WeatherStuff">
-          <div class = "weather" id = "weather"></div>
-          <button class = "dropdown" id = "dropdown">
-            <img src = "dropdown.png" class = "DropdownImage" id = "DropdownImage"></img>
-          </button>
-          <div class = "DropdownMenu" id = "DropdownMenu"></div>
+        <div class = "WeatherContainer" id = "WeatherContainer">
+            <div class = "ShortForecast" id = "ShortForecast">
+                <div class = "weather" id = "weather"></div>
+                <div class = "WeatherIcon" id = "WeatherIcon"></div>
+            </div>
+            <div class = "DropdownContainer" id = "DropdownContainer">
+                <button class = "dropdown" id = "dropdown" onclick = "ShowWeatherDropdownMenu()">
+                    <div class = "DropdownArrow" id = "DropdownArrow"></div>
+                </button>
+                <div class = "DropdownMenu" id = "DropdownMenu"></div>
+            </div>
+            <div class = "FutureWeather" id = "FutureWeather"></div>
         </div>
     </body>
     <link rel = "stylesheet" type = "text/css" href = "stylesheet.css">
