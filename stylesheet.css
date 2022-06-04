@@ -12,7 +12,14 @@
 }
 
 .time{
-    font-size: 10vh;
+}
+
+.MainTime{
+  font-size: 10vh;
+}
+
+.seconds{
+  font-size: 5vh;
 }
 
 .WeatherStuff{
@@ -76,4 +83,8 @@
     -webkit-transform: rotate(45deg);
     position: relative;
     bottom: 1vh;
+}
+
+.SearchBarContainer{
+
 }

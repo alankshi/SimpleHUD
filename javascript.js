@@ -37,7 +37,8 @@ function UpdateClock(){
         minutes = '0' + minutes;
     }
 
-    Get("time").innerHTML = hours + ':' + minutes + ':' + seconds;
+    Get("MainTime").innerHTML = hours + ':' + minutes;
+    Get("seconds").innerHTML = seconds;
     setTimeout(UpdateClock, 500);
 }
 
