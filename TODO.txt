@@ -6,8 +6,8 @@ Make weather look better
 Add options to put links to frequent pages maybe?
 Optimize Clock because its very inefficient right now
 Make dropdown menu slide down and look cool
-Format Google search bar
 
+Style Google search bar - DONE
 Comment - DONE
 Make dropdown menu - DONE
 Add AM / PM support - DONE

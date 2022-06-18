@@ -88,3 +88,18 @@
 .SearchBarContainer{
 
 }
+
+.SearchInput{
+  border-radius: 100vh;
+  border: none;
+  outline: none;
+  box-shadow: 0vh 0.5vh 1vh gray;
+  padding-left: 2vw;
+  padding-right: 0.5vw;
+  padding-top: 0.5vh;
+  padding-bottom: 0.75vh;
+  background: url("GoogleLogo.png") no-repeat;
+  background-size: contain;
+  background-position: 0.5vh;
+  font-family: Tahoma;
+}

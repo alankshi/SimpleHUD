@@ -96,6 +96,21 @@ function ShowWeatherDropdownMenu(){
     }
 }
 
+function Search(){
+  //https://www.google.com/search?q=
+  var term = Get("SearchInput").value;
+  Get("SearchInput").value = '';
+  term.replaceAll(" ", '+')
+  window.open("https://www.google.com/search?q=" + term);
+}
+
+Get("SearchInput").addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+        Search();
+    }
+});
+
+
 Get("DropdownMenu").style.visibility = "hidden";
 
 UpdateWeather();
