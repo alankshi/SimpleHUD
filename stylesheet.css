@@ -3,12 +3,11 @@
 }
 
 .timing{
-
+  text-align: center;
 }
 
 .clock{
     text-align: center;
-
 }
 
 .time{
@@ -98,8 +97,27 @@
   padding-right: 0.5vw;
   padding-top: 0.5vh;
   padding-bottom: 0.75vh;
-  background: url("GoogleLogo.png") no-repeat;
+  background: url("Icons/GoogleLogo.png") no-repeat;
   background-size: contain;
   background-position: 0.5vh;
   font-family: Tahoma;
+}
+
+.StopwatchButtons{
+
+}
+
+.stopwatch{
+  text-align: center;
+  display: none;
+}
+
+.timer{
+  text-align: center;
+  display: none;
+}
+
+.alarms{
+  text-align: center;
+  display: none;
 }

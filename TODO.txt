@@ -6,6 +6,8 @@ Make weather look better
 Add options to put links to frequent pages maybe?
 Optimize Clock because its very inefficient right now
 Make dropdown menu slide down and look cool
+Add icons for timing controls
+Optimize TimingSwitch() by storing currently displayed timer and only hiding that one
 
 Style Google search bar - DONE
 Comment - DONE

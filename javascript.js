@@ -104,12 +104,25 @@ function Search(){
   window.open("https://www.google.com/search?q=" + term);
 }
 
+function TimingSwitch(index){
+  var TimingElements = [Get("stopwatch"), Get("timer"), Get("alarms"), Get("clock")];
+
+  for(var i = 0; i < TimingElements.length; i++){
+    if(i == index){
+      TimingElements[i].style.display = "block";
+    }
+    else{
+      TimingElements[i].style.display = "none";
+    }
+  }
+}
+
+//Make it so when enter is pressed in search bar it searches
 Get("SearchInput").addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
         Search();
     }
 });
-
 
 Get("DropdownMenu").style.visibility = "hidden";
 
