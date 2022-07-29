@@ -1,7 +1,6 @@
 var LastWeatherUpdate = 0;
 var DisplayDate = 0;
 
-//Shorthand functions
 function Get(id){
     return document.getElementById(id);
 }
@@ -10,13 +9,16 @@ function Log(text){
   console.log(text);
 }
 
-function UpdateClock(){
-    var curr = new Date();
-    var hours = curr.getHours().toString();
-    var minutes = curr.getMinutes().toString();
-    var seconds = curr.getSeconds().toString();
+function DObj(){
+  return new Date();
+}
 
-    //AM and PM support
+function UpdateClock(){
+    const curr = DObj();
+    let hours = curr.getHours().toString();
+    let minutes = curr.getMinutes().toString().padStart(2, '0');
+    let seconds = curr.getSeconds().toString().padStart(2, '0');
+
     if(parseInt(hours) % 12 != hours){
       Get("M").innerHTML = "PM";
 
@@ -26,15 +28,6 @@ function UpdateClock(){
     }
     else{
       Get("M").innerHTML = "AM";
-    }
-
-    //Adding leading zeros to minutes and seconds
-    if(seconds.length == 1){
-        seconds = '0' + seconds;
-    }
-
-    if(minutes.length == 1){
-        minutes = '0' + minutes;
     }
 
     Get("MainTime").innerHTML = hours + ':' + minutes;
@@ -51,7 +44,6 @@ function UpdateDate(){
 function GeoSuccess(pos){
     coords = [pos.coords.latitude.toString(), pos.coords.longitude.toString()];
 
-    //Access API to get forecast based on longitude and latitude
     fetch("https://api.weather.gov/points/" + coords[0] + ',' + coords[1], {method : "GET"})
         .then(function(response){
             return response.json();
@@ -76,7 +68,6 @@ function GeoSuccess(pos){
 }
 
 function UpdateWeather(){
-    //Check if geolocation is supported
     if('geolocation' in navigator){
         navigator.geolocation.getCurrentPosition(GeoSuccess);
     }
@@ -88,16 +79,15 @@ function UpdateWeather(){
 function ShowWeatherDropdownMenu(){
     menu = Get("DropdownMenu");
 
-    if(menu.style.visibility == "hidden"){
-        menu.style.visibility = "visible";
+    if(menu.style.display == "none"){
+        menu.style.display = "block";
     }
     else{
-        menu.style.visibility = "hidden";
+        menu.style.display = "none";
     }
 }
 
 function Search(){
-  //https://www.google.com/search?q=
   var term = Get("SearchInput").value;
   Get("SearchInput").value = '';
   term.replaceAll(" ", '+')
@@ -105,7 +95,7 @@ function Search(){
 }
 
 function TimingSwitch(index){
-  var TimingElements = [Get("stopwatch"), Get("timer"), Get("alarms"), Get("clock")];
+  var TimingElements = [Get("stopwatch"), Get("timer"), Get("clock")];
 
   for(var i = 0; i < TimingElements.length; i++){
     if(i == index){
@@ -117,14 +107,45 @@ function TimingSwitch(index){
   }
 }
 
-//Make it so when enter is pressed in search bar it searches
+var SWActive = false;
+var SWStart;
+var CurrSW;
+
+function ToggleSW(){
+  SWActive = !SWActive;
+  const e = Get("SWControl");
+
+  if(SWActive){
+    e.innerHTML = "Stop";
+
+    SWStart = DObj().getTime();
+    CurrSW = setInterval(SW, 1);
+  }
+  else{
+    e.innerHTML = "Start";
+    clearInterval(CurrSW);
+  }
+}
+
+function SW(){
+  const curr = new Date();
+  const m = curr.getTime();
+  const SWTime = m - SWStart;
+
+  let hours = Math.floor(SWTime / 3600000).toString().padStart(2, '0');
+  let minutes = Math.floor((SWTime - (hours * 3600000)) / 60000).toString().padStart(2, '0');
+  let seconds = Math.floor((SWTime - (hours * 3600000) - (minutes * 60000)) / 1000).toString().padStart(2, '0');
+  let milliseconds = Math.floor(SWTime - (hours * 3600000) - (minutes * 60000) - (seconds * 1000)).toString().padStart(3, '0');
+
+  Get("SWMainTime").innerHTML = hours + ":" + minutes + ":" + seconds; 
+  Get("SWMilli").innerHTML = milliseconds;
+}
+
 Get("SearchInput").addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
         Search();
     }
 });
-
-Get("DropdownMenu").style.visibility = "hidden";
 
 UpdateWeather();
 UpdateClock();

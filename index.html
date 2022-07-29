@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>HUD</title>
+        <script src = "javascript.js" defer></script>
+        <link rel = "stylesheet" type = "text/css" href = "stylesheet.css">
     </head>
     <body class = "body">
         <div class = "timing" id = "timing">
@@ -17,23 +19,35 @@
                 </span>
             </div>
             <div class = "stopwatch" id = "stopwatch">
+              <span class = "time" id = "time">
+                <span class = "MainTime" id = "SWMainTime">00:00:00</span>
+                <span class = "seconds" id = "SWMilli">000</span>
+              </span>
               <div class = "StopwatchButtons" id = 'StopwatchButtons'>
-                <button class = "StopwatchStartButton" id = "StopwatchStartButton">
+                <button class = "SWControl" id = "SWControl" onclick = "ToggleSW()">
                   Start
                 </button>
-                <button class = "StopwatchStopButton" id = "StopwatchStopButton">
-                  Stop
-                </button>
-                <button class = "StopwatchResetButton" id = "StopwatchResetButton">
+                <button class = "SWReset" id = "SWReset">
                   Reset
                 </button>
               </div>
             </div>
             <div class = "timer" id = "timer">
-              e
-            </div>
-            <div class = "alarms" id = "alarms">
-              e
+              <span class = "time" id = "time">
+                <span class = "MainTime" id = "MainTime">00:00</span>
+                <span class = "seconds" id = "seconds">00</span>
+              </span>
+              <div class = "TimerButtons" id = "TimerButtons">
+                <button class = "StartTimer" id = "StartTimer">
+                  Start
+                </button>
+                <button class = "StopTimer" id = "StopTimer">
+                  Stop
+                </button>
+                <button class = "SetTimer" id = "SetTimer">
+                  Set
+                </button>
+              </div>
             </div>
             <br>
             <div class = "TimingControls" id = "TimingControls">
@@ -41,12 +55,9 @@
                 Stopwatch
               </button>
               <button class = "SwitchTimer" id = "SwitchTimer" onclick = "TimingSwitch(1)">
-                Timer
+                Timer 
               </button>
-              <button class = "SwitchAlarms" id = "SwitchAlarms" onclick = "TimingSwitch(2)">
-                Alarms
-              </button>
-              <button class = "SwitchClock" id = "SwitchClock" onclick = "TimingSwitch(3)">
+              <button class = "SwitchClock" id = "SwitchClock" onclick = "TimingSwitch(2)">
                 Clock
               </button>
             </div>
@@ -68,6 +79,4 @@
           <input type = "text" class = "SearchInput" id = "SearchInput" placeholder = "Search...">
         </div>
     </body>
-    <link rel = "stylesheet" type = "text/css" href = "stylesheet.css">
-    <script src = "javascript.js"></script>
 </html>

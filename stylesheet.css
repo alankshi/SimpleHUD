@@ -10,19 +10,12 @@
     text-align: center;
 }
 
-.time{
-}
-
 .MainTime{
   font-size: 10vh;
 }
 
 .seconds{
   font-size: 5vh;
-}
-
-.WeatherStuff{
-
 }
 
 .ShortForecast{
@@ -37,12 +30,6 @@
     text-align: center;
 }
 
-.WeatherIcon{
-}
-
-.date{
-}
-
 .dropdown{
   background-color: transparent;
   border-width: 1px;
@@ -54,6 +41,7 @@
 
 .DropdownMenu{
     text-align: center;
+    display: none;
 }
 
 .DropdownContainer{
@@ -84,10 +72,6 @@
     bottom: 1vh;
 }
 
-.SearchBarContainer{
-
-}
-
 .SearchInput{
   border-radius: 100vh;
   border: none;
@@ -101,11 +85,7 @@
   background-size: contain;
   background-position: 0.5vh;
   font-family: Tahoma;
-}
-
-.StopwatchButtons{
-
-}
+} 
 
 .stopwatch{
   text-align: center;
