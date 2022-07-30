@@ -109,6 +109,8 @@ function TimingSwitch(index){
 
 var SWActive = false;
 var SWStart;
+var SWTimeP = 0;
+var SWTime;
 var CurrSW;
 
 function ToggleSW(){
@@ -123,14 +125,14 @@ function ToggleSW(){
   }
   else{
     e.innerHTML = "Start";
+    SWTimeP = SWTime;
     clearInterval(CurrSW);
   }
 }
 
 function SW(){
-  const curr = new Date();
-  const m = curr.getTime();
-  const SWTime = m - SWStart;
+  const m = DObj().getTime();
+  SWTime = m - SWStart + SWTimeP;
 
   let hours = Math.floor(SWTime / 3600000).toString().padStart(2, '0');
   let minutes = Math.floor((SWTime - (hours * 3600000)) / 60000).toString().padStart(2, '0');
@@ -139,6 +141,12 @@ function SW(){
 
   Get("SWMainTime").innerHTML = hours + ":" + minutes + ":" + seconds; 
   Get("SWMilli").innerHTML = milliseconds;
+}
+
+function ResetSW(){
+  SWTimeP = 0;
+  SWTime = 0;
+  SWStart = DObj().getTime();
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
