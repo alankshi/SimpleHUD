@@ -94,17 +94,13 @@ function Search(){
   window.open("https://www.google.com/search?q=" + term);
 }
 
-function TimingSwitch(index){
-  var TimingElements = [Get("stopwatch"), Get("timer"), Get("clock")];
+var CurrentIndex = 2;
+var TimingElements = [Get("stopwatch"), Get("timer"), Get("clock")];
 
-  for(var i = 0; i < TimingElements.length; i++){
-    if(i == index){
-      TimingElements[i].style.display = "block";
-    }
-    else{
-      TimingElements[i].style.display = "none";
-    }
-  }
+function TimingSwitch(index){
+  TimingElements[CurrentIndex].style.display = "none";
+  TimingElements[index].style.display = "block";
+  CurrentIndex = index;
 }
 
 var SWActive = false;
@@ -122,12 +118,12 @@ function ToggleSW(){
 
     SWStart = DObj().getTime();
     CurrSW = setInterval(SW, 1);
+    return;
   }
-  else{
-    e.innerHTML = "Start";
-    SWTimeP = SWTime;
-    clearInterval(CurrSW);
-  }
+
+  e.innerHTML = "Start";
+  SWTimeP = SWTime;
+  clearInterval(CurrSW);
 }
 
 function SW(){
@@ -147,6 +143,31 @@ function ResetSW(){
   SWTimeP = 0;
   SWTime = 0;
   SWStart = DObj().getTime();
+}
+
+var TimerActive = false;
+var CurrTimer;
+
+function ToggleTimer(){
+  TimerActive = !TimerActive;
+  const e = Get("TimerControl");
+
+  if(TimerActive){
+    e.innerHTML = "Stop";
+    CurrTimer = setInterval(RunTimer, 100);
+    return;
+  }
+  
+  e.innerHTML = "Start";
+  clearInterval(CurrTimer);
+}
+
+function SetTimer(){
+
+}
+
+function RunTimer(){
+
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {

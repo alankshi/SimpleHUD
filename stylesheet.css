@@ -101,3 +101,27 @@
   text-align: center;
   display: none;
 }
+
+.TimerForm{
+  display: block;
+  margin-bottom: 1vh;
+}
+
+.TimerHours{
+  text-align: center;
+  width: 1.5vw;
+}
+
+.TimerMins{
+  text-align: center;
+  width: 1.5vw;
+}
+
+.TimerSecs{
+  text-align: center;
+  width: 1.5vw;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}

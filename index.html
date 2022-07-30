@@ -37,15 +37,14 @@
                 <span class = "MainTime" id = "MainTime">00:00</span>
                 <span class = "seconds" id = "seconds">00</span>
               </span>
-              <div class = "TimerButtons" id = "TimerButtons">
-                <button class = "StartTimer" id = "StartTimer">
+              <div class = "TimingButtons" id = "TimingButtons">
+                <form class = "TimerForm" id = "TimerForm">
+                  <input type = "text" class = "TimerHours" id = "TimerHours" placeholder = "00"> :
+                  <input type = "text" class = "TimerMins" id = "TimerMins" placeholder = "00"> :
+                  <input type = "text" class = "TimerSecs" id = "TimerSecs" placeholder = "00">
+                </form>
+                <button class = "TimerControl" id = "TimerControl" onclick = "ToggleTimer()">
                   Start
-                </button>
-                <button class = "StopTimer" id = "StopTimer">
-                  Stop
-                </button>
-                <button class = "SetTimer" id = "SetTimer">
-                  Set
                 </button>
               </div>
             </div>
