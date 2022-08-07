@@ -1,4 +1,3 @@
-var LastWeatherUpdate = 0;
 var DisplayDate = 0;
 
 function Get(id){
@@ -13,18 +12,28 @@ function DObj(){
   return new Date();
 }
 
+var LastWeatherUpdate = DObj().getTime();
+
 function UpdateClock(){
     const curr = DObj();
-    let hrs = curr.getHours().toString();
+    let hrs = curr.getHours();
     let mins = curr.getMinutes().toString().padStart(2, '0');
     let secs = curr.getSeconds().toString().padStart(2, '0');
 
-    if(parseInt(hrs) % 12 != hrs){
-      Get("M").innerHTML = "PM";
+    const CurrTime = curr.getTime();
 
-      if(hrs > 12){
-        hrs -= 12;
-      }
+    if(CurrTime - LastWeatherUpdate > 600000){
+      UpdateWeather();
+      LastWeatherUpdate = CurrTime;
+    }
+
+    if(hrs == 0 && mins == 0 && secs <= 1){
+      UpdateDate();
+    }
+
+    if(hrs > 12){
+      Get("M").innerHTML = "PM";
+      hours -= 12;
     }
     else{
       Get("M").innerHTML = "AM";
@@ -67,12 +76,12 @@ function GeoSuccess(pos){
 }
 
 function UpdateWeather(){
-    if('geolocation' in navigator){
-        navigator.geolocation.getCurrentPosition(GeoSuccess);
-    }
-    else{
-        Get("weather").innerHTML = "No Location Data";
-    }
+  if('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(GeoSuccess);
+  }
+  else{
+    Get("weather").innerHTML = "No Location Data";
+  }
 }
 
 function ShowWeatherDropdownMenu(){
@@ -139,7 +148,7 @@ function SW(){
   SWTime = m - SWStart + SWTimeP;
   const [hours, minutes, seconds, milliseconds] = Mil2Time(SWTime);
 
-  Get("SWMainTime").innerHTML = `${hours}:${minutes}:${seconds}`; 
+  Get("SWMainTime").innerHTML = `${hours}:${minutes}:${seconds}`;
   Get("SWMilli").innerHTML = milliseconds;
 }
 
@@ -148,7 +157,7 @@ function ResetSW(){
   SWTime = 0;
   SWStart = DObj().getTime();
 
-  Get("SWMainTime").innerHTML = "00:00:00"; 
+  Get("SWMainTime").innerHTML = "00:00:00";
   Get("SWMilli").innerHTML = "000";
 }
 
@@ -168,7 +177,7 @@ function ToggleTimer(){
     TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
     return;
   }
-  
+
   e.innerHTML = "Start";
   clearInterval(CurrTimer);
 }
