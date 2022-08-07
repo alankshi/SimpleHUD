@@ -1,5 +1,4 @@
 # SimpleHUD
-A simple, minimalistic web  \
-**Features:** Timing utilities (clock, stopwatch, timer), real-time weather, and a google search bar.
+A simple, minimalistic web homepage including timing utilities, weather, and a Google search bar
 
 # User Guide
