@@ -32,7 +32,6 @@ function UpdateClock(){
 
     Get("MainTime").innerHTML = hours + ':' + minutes;
     Get("seconds").innerHTML = seconds;
-    setTimeout(UpdateClock, 500);
 }
 
 function UpdateDate(){
@@ -126,16 +125,21 @@ function ToggleSW(){
   clearInterval(CurrSW);
 }
 
+function Mil2Time(milli){
+  let hours = Math.floor(milli / 3600000).toString().padStart(2, '0');
+  let minutes = Math.floor((milli - (hours * 3600000)) / 60000).toString().padStart(2, '0');
+  let seconds = Math.floor((milli - (hours * 3600000) - (minutes * 60000)) / 1000).toString().padStart(2, '0');
+  let milliseconds = Math.floor(milli - (hours * 3600000) - (minutes * 60000) - (seconds * 1000)).toString().padStart(3, '0');
+
+  return [hours, minutes, seconds, milliseconds];
+}
+
 function SW(){
   const m = DObj().getTime();
   SWTime = m - SWStart + SWTimeP;
+  const [hours, minutes, seconds, milliseconds] = Mil2Time(SWTime);
 
-  let hours = Math.floor(SWTime / 3600000).toString().padStart(2, '0');
-  let minutes = Math.floor((SWTime - (hours * 3600000)) / 60000).toString().padStart(2, '0');
-  let seconds = Math.floor((SWTime - (hours * 3600000) - (minutes * 60000)) / 1000).toString().padStart(2, '0');
-  let milliseconds = Math.floor(SWTime - (hours * 3600000) - (minutes * 60000) - (seconds * 1000)).toString().padStart(3, '0');
-
-  Get("SWMainTime").innerHTML = hours + ":" + minutes + ":" + seconds; 
+  Get("SWMainTime").innerHTML = `${hours}:${minutes}:${seconds}`; 
   Get("SWMilli").innerHTML = milliseconds;
 }
 
@@ -147,6 +151,8 @@ function ResetSW(){
 
 var TimerActive = false;
 var CurrTimer;
+var TimerTime;
+var TimerStart;
 
 function ToggleTimer(){
   TimerActive = !TimerActive;
@@ -155,6 +161,8 @@ function ToggleTimer(){
   if(TimerActive){
     e.innerHTML = "Stop";
     CurrTimer = setInterval(RunTimer, 100);
+    TimerStart = DObj().getTime();
+    TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
     return;
   }
   
@@ -162,12 +170,28 @@ function ToggleTimer(){
   clearInterval(CurrTimer);
 }
 
-function SetTimer(){
-
+function InputInt(input){
+  if(!input){
+    return 0;
+  }
+  else{
+    return parseInt(input);
+  }
 }
 
 function RunTimer(){
+  const t = TimerTime - (DObj().getTime() - TimerStart);
 
+  if(t <= 0){
+    Get("TimerSeconds").innerHTML = "00";
+    ToggleTimer();
+    return;
+  }
+
+  const [hrs, mins, secs, millisecs] = Mil2Time(t);
+
+  Get("TimerMainTime").innerHTML = `${hrs}:${mins}`;
+  Get("TimerSeconds").innerHTML = secs;
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
@@ -177,5 +201,5 @@ Get("SearchInput").addEventListener("keydown", function (e) {
 });
 
 UpdateWeather();
-UpdateClock();
+var Clock = setInterval(UpdateClock, 250);
 UpdateDate();
