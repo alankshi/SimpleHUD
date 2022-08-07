@@ -33,7 +33,7 @@ function UpdateClock(){
 
     if(hrs > 12){
       Get("M").innerHTML = "PM";
-      hours -= 12;
+      hrs -= 12;
     }
     else{
       Get("M").innerHTML = "AM";
