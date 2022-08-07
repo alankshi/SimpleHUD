@@ -15,23 +15,23 @@ function DObj(){
 
 function UpdateClock(){
     const curr = DObj();
-    let hours = curr.getHours().toString();
-    let minutes = curr.getMinutes().toString().padStart(2, '0');
-    let seconds = curr.getSeconds().toString().padStart(2, '0');
+    let hrs = curr.getHours().toString();
+    let mins = curr.getMinutes().toString().padStart(2, '0');
+    let secs = curr.getSeconds().toString().padStart(2, '0');
 
-    if(parseInt(hours) % 12 != hours){
+    if(parseInt(hrs) % 12 != hrs){
       Get("M").innerHTML = "PM";
 
-      if(hours > 12){
-        hours -= 12;
+      if(hrs > 12){
+        hrs -= 12;
       }
     }
     else{
       Get("M").innerHTML = "AM";
     }
 
-    Get("MainTime").innerHTML = hours + ':' + minutes;
-    Get("seconds").innerHTML = seconds;
+    Get("ClockMainTime").innerHTML = `${hrs}:${mins}`;
+    Get("ClockSecs").innerHTML = secs;
 }
 
 function UpdateDate(){
@@ -147,6 +147,9 @@ function ResetSW(){
   SWTimeP = 0;
   SWTime = 0;
   SWStart = DObj().getTime();
+
+  Get("SWMainTime").innerHTML = "00:00:00"; 
+  Get("SWMilli").innerHTML = "000";
 }
 
 var TimerActive = false;
