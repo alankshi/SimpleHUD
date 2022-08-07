@@ -1,4 +1,3 @@
-var LastWeatherUpdate = 0;
 var DisplayDate = 0;
 
 function Get(id){
@@ -13,18 +12,28 @@ function DObj(){
   return new Date();
 }
 
+var LastWeatherUpdate = DObj().getTime();
+
 function UpdateClock(){
     const curr = DObj();
-    let hours = curr.getHours().toString();
+    let hours = curr.getHours();
     let minutes = curr.getMinutes().toString().padStart(2, '0');
     let seconds = curr.getSeconds().toString().padStart(2, '0');
 
-    if(parseInt(hours) % 12 != hours){
-      Get("M").innerHTML = "PM";
+    const CurrTime = curr.getTime();
 
-      if(hours > 12){
-        hours -= 12;
-      }
+    if(CurrTime - LastWeatherUpdate > 600000){
+      UpdateWeather();
+      LastWeatherUpdate = CurrTime;
+    }
+
+    if(parseInt(hours) == 0 && minutes == 0 && seconds <= 1){
+      UpdateDate();
+    }
+
+    if(hours % 12 != hours){
+      Get("M").innerHTML = "PM";
+      hours -= 12;
     }
     else{
       Get("M").innerHTML = "AM";
@@ -67,12 +76,12 @@ function GeoSuccess(pos){
 }
 
 function UpdateWeather(){
-    if('geolocation' in navigator){
-        navigator.geolocation.getCurrentPosition(GeoSuccess);
-    }
-    else{
-        Get("weather").innerHTML = "No Location Data";
-    }
+  if('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(GeoSuccess);
+  }
+  else{
+    Get("weather").innerHTML = "No Location Data";
+  }
 }
 
 function ShowWeatherDropdownMenu(){
