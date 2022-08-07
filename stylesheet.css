@@ -4,6 +4,11 @@
 
 .timing{
   text-align: center;
+  height: 21vh;
+}
+
+.TimingControls{
+  text-align: center;
 }
 
 .clock{
