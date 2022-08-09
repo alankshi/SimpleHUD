@@ -12,5 +12,5 @@ Typing anything into the search bar and pressing enter will search the entry on 
 **Timing**\
 Different timers can be switched to using the buttons below the search bar
 
-Press the start button to start the stopwatch and again to stop it. The reset button will reset the time back to 0
+Press the start button to start the stopwatch and again to stop it. The reset button will reset the time back to 0\
 Press the start button to start a timer after inputting hours : minutes : seconds in the text boxes above the start button.
