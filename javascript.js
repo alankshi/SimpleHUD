@@ -52,7 +52,7 @@ function UpdateDate(){
 function GeoSuccess(pos){
     coords = [pos.coords.latitude.toString(), pos.coords.longitude.toString()];
 
-    fetch("https://api.weather.gov/points/" + coords[0] + ',' + coords[1], {method : "GET"})
+    fetch(`https://api.weather.gov/points/${coords[0]},${coords[1]}`, {method : "GET"})
         .then(function(response){
             return response.json();
         })
@@ -62,14 +62,15 @@ function GeoSuccess(pos){
                     return response.json();
                 })
                 .then(function(data){
-                    var Forecasts = JSON.parse(JSON.stringify(data.properties.periods));
-                    var n = Forecasts[0]
+                    var Forecasts = JSON.parse(JSON.stringify(data.properties.periods));  
+                    const n = Forecasts[0]
 
-                    var ShortForecast = [n.name, n.shortForecast + " " + n.temperature + n.temperatureUnit];
+                    const ShortForecast = [n.name, n.shortForecast + " " + n.temperature + n.temperatureUnit];
 
-                    Get("WeatherIcon").innerHTML = '<img src = "' + n.icon + '"></img>';
+                    Get("WeatherIcon").innerHTML = `<img src = "${n.icon}"></img>`;
                     Get("weather").innerHTML = ShortForecast.join('<br>');
                     Get("DropdownMenu").innerHTML = n.detailedForecast;
+                    Get("ShowWeather").innerHTML = `${n.temperature}&deg;F`;
                 });
 
         });
@@ -99,7 +100,7 @@ function Search(){
   var term = Get("SearchInput").value;
   Get("SearchInput").value = '';
   term.replaceAll(" ", '+')
-  window.open("https://www.google.com/search?q=" + term);
+  window.open(`https://www.google.com/search?q=${term}`);
 }
 
 var CurrentIndex = 2;
@@ -204,6 +205,24 @@ function RunTimer(){
 
   Get("TimerMainTime").innerHTML = `${hrs}:${mins}`;
   Get("TimerSeconds").innerHTML = secs;
+}
+
+Get("Forecast").style.display = "none";   
+
+function ShowWeather(){
+  const Forecast = Get("Forecast");
+  const Button = Get("ShowWeather");
+  
+  if(Forecast.style.display == "none"){
+    Forecast.style.display = "block";
+    Button.style.borderRadius = "0vw 0vw 0vw 0vw";
+    Button.style.borderBottom = "none";
+  } 
+  else{
+    Forecast.style.display = "none";
+    Button.style.borderRadius = "0vw 0vw 1vw 1vw";
+    Button.style.borderBottom = "solid 1px black";
+  }
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {

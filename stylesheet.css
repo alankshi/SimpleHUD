@@ -50,31 +50,50 @@
 }
 
 .DropdownContainer{
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5vh;
+  align-self: center;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5vh;
 }
 
 .WeatherContainer{
-    width: 20vw;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
+  width: 20vw;
+  align-self: center;
+  width: 25%;
+  text-align: center;
+  position: absolute;
+  top: 0vh;
+  right: 0vh;
+}
+
+.Forecast{
+  align-self: center;
+  width: 20vw;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-self: center;
+  text-align: center;
 }
 
 .DropdownArrow{
-    border: solid;
-    border-color: black;
-    border-width: 0 0.75vh 0.75vh 0;
-    padding: 1vh;
-    border-radius: 0.5vh;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    position: relative;
-    bottom: 1vh;
+  border: solid;
+  border-color: black;
+  border-width: 0 0.75vh 0.75vh 0;
+  padding: 1vh;
+  border-radius: 0.5vh;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  position: relative;
+  bottom: 1vh;
+}
+
+.SearchBarContainer{
+  text-align: center;
+
 }
 
 .SearchInput{
@@ -82,14 +101,17 @@
   border: none;
   outline: none;
   box-shadow: 0vh 0.5vh 1vh gray;
-  padding-left: 2vw;
+  padding-left: 3vw;
   padding-right: 0.5vw;
   padding-top: 0.5vh;
   padding-bottom: 0.75vh;
+  width: 34vw;
+  height: 4vh;
   background: url("Icons/GoogleLogo.png") no-repeat;
   background-size: contain;
   background-position: 0.5vh;
   font-family: Tahoma;
+  font-size: 2vh;
 } 
 
 .stopwatch{
@@ -129,4 +151,21 @@
 
 input:focus::placeholder {
   color: transparent;
+}
+
+.center{
+  position: relative;
+  top: 20vh;
+  text-align: center;
+}
+
+.ShowWeather{
+  margin-left: 5.5vw;
+  background: white;
+  border-top: none;
+  padding-top: 1vh;
+  position: relative;
+  bottom: 0.8vh;
+  border-radius: 0vw 0vw 1vw 1vw;
+  border: solid 1px black;
 }
