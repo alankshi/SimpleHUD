@@ -164,7 +164,7 @@ function ResetSW(){
 
 var TimerActive = false;
 var CurrTimer;
-var TimerTime;
+var TimerTime = 0;
 var TimerStart;
 
 function ToggleTimer(){
@@ -172,15 +172,33 @@ function ToggleTimer(){
   const e = Get("TimerControl");
 
   if(TimerActive){
+    if(TimerTime == 0){
+      TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
+    }
+
     e.innerHTML = "Stop";
     CurrTimer = setInterval(RunTimer, 100);
     TimerStart = DObj().getTime();
-    TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
+    TimerActive = true;
+
     return;
   }
 
+  TimerTime = TimerTime - (DObj().getTime() - TimerStart);
+  TimerActive = false;
+  Log("test");
   e.innerHTML = "Start";
   clearInterval(CurrTimer);
+}
+
+function set_timer(){
+  TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
+
+  if(TimerActive){
+    TimerStart = DObj().getTime();
+  }
+
+  update_timer(TimerTime); 
 }
 
 function InputInt(input){
@@ -201,6 +219,10 @@ function RunTimer(){
     return;
   }
 
+  update_timer(t);
+}
+
+function update_timer(t){
   const [hrs, mins, secs, millisecs] = Mil2Time(t);
 
   Get("TimerMainTime").innerHTML = `${hrs}:${mins}`;
