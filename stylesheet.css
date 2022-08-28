@@ -1,5 +1,6 @@
 .body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
 }
 
 .timing{
@@ -45,13 +46,18 @@
 }
 
 .DropdownMenu{
-    text-align: center;
-    display: none;
+  text-align: center;
+  height: auto;
+}
+
+.DropdownSlider{
+  overflow: hidden;
+  transition: all 300ms ease-in;
 }
 
 .DropdownContainer{
   align-self: center;
-  width: 20vw;
+  width: 15vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,24 +65,35 @@
 }
 
 .WeatherContainer{
-  width: 20vw;
   align-self: center;
-  width: 25%;
+  width: 17vw;
   text-align: center;
+  align-items: center;
   position: absolute;
   top: 0vh;
   right: 0vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .Forecast{
   align-self: center;
-  width: 20vw;
+  width: 15vw;
   justify-content: center;
   display: flex;
   flex-direction: column;
   gap: 1vh;
   align-self: center;
   text-align: center;
+  padding: 0.5vw;
+}
+
+.forecast_slider{
+  overflow: hidden;
+  transition: all 300ms ease-in;
+  border: 1px black solid;
+  margin-top: -1vh;
+  border-top: none;
 }
 
 .DropdownArrow{
@@ -86,7 +103,6 @@
   padding: 1vh;
   border-radius: 0.5vh;
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
   position: relative;
   bottom: 1vh;
 }
@@ -160,7 +176,7 @@ input:focus::placeholder {
 }
 
 .ShowWeather{
-  margin-left: 5.5vw;
+  width: 16.15vw;
   background: white;
   border-top: none;
   padding-top: 1vh;

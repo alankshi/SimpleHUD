@@ -85,14 +85,25 @@ function UpdateWeather(){
   }
 }
 
+Get("DropdownSlider").style.height = "0px";
 function ShowWeatherDropdownMenu(){
-    menu = Get("DropdownMenu");
+    const menu = Get("DropdownMenu");
+    const arrow = Get("DropdownArrow");
+    const slider = Get("DropdownSlider");
+    const Forecast = Get("Forecast");
+    const fslider = Get('forecast_slider');
 
-    if(menu.style.display == "none"){
-        menu.style.display = "block";
+    if(slider.style.height == "0px"){
+      fslider.style.height = `${Forecast.getBoundingClientRect().height + menu.getBoundingClientRect().height}px`;
+      slider.style.height = `${menu.getBoundingClientRect().height}px`;
+        arrow.style.transform = "rotate(-135deg)";
+        arrow.style.bottom = "0vh";
     }
     else{
-        menu.style.display = "none";
+      fslider.style.height = `${Forecast.getBoundingClientRect().height - menu.getBoundingClientRect().height}px`;
+      slider.style.height = "0px";
+        arrow.style.transform = "rotate(45deg)";
+        arrow.style.bottom = "1vh";
     }
 }
 
@@ -229,22 +240,33 @@ function update_timer(t){
   Get("TimerSeconds").innerHTML = secs;
 }
 
-Get("Forecast").style.display = "none";   
+Get("forecast_slider").style.height = "0px"; 
+Get("forecast_slider").style.border = "none";
 
 function ShowWeather(){
   const Forecast = Get("Forecast");
   const Button = Get("ShowWeather");
+  const slider = Get('forecast_slider');
   
-  if(Forecast.style.display == "none"){
-    Forecast.style.display = "block";
+  if(slider.style.height == "0px"){
+    slider.style.border = "1px black solid";
+    slider.style.height = `${Forecast.getBoundingClientRect().height}px`;
     Button.style.borderRadius = "0vw 0vw 0vw 0vw";
     Button.style.borderBottom = "none";
   } 
   else{
-    Forecast.style.display = "none";
-    Button.style.borderRadius = "0vw 0vw 1vw 1vw";
-    Button.style.borderBottom = "solid 1px black";
+    slider.style.height = "0px";
+    setTimeout(closeWeather, 300);
   }
+}
+
+function closeWeather(){
+  const button = Get("ShowWeather");
+  const slider = Get('forecast_slider');
+  
+  button.style.borderRadius = "0vw 0vw 1vw 1vw";
+  button.style.borderBottom = "solid 1px black";
+  slider.style.border = "none";
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
