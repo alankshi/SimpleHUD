@@ -249,10 +249,11 @@ function ShowWeather(){
   const slider = Get('forecast_slider');
   
   if(slider.style.height == "0px"){
-    slider.style.border = "1px black solid";
+    slider.style.border = "none";
     slider.style.height = `${Forecast.getBoundingClientRect().height}px`;
     Button.style.borderRadius = "0vw 0vw 0vw 0vw";
     Button.style.borderBottom = "none";
+    Button.style.boxShadow = "0vh -1vh 1vh gray";
   } 
   else{
     slider.style.height = "0px";
@@ -265,7 +266,7 @@ function closeWeather(){
   const slider = Get('forecast_slider');
   
   button.style.borderRadius = "0vw 0vw 1vw 1vw";
-  button.style.borderBottom = "solid 1px black";
+  button.style.borderBottom = "none";
   slider.style.border = "none";
 }
 

@@ -91,9 +91,11 @@
 .forecast_slider{
   overflow: hidden;
   transition: all 300ms ease-in;
-  border: 1px black solid;
+  border: none;
   margin-top: -1vh;
   border-top: none;
+  border-radius: 0vw 0vw 1vw 1vw;
+  box-shadow: 0vh 0.5vh 1vh gray;
 }
 
 .DropdownArrow{
@@ -183,5 +185,39 @@ input:focus::placeholder {
   position: relative;
   bottom: 0.8vh;
   border-radius: 0vw 0vw 1vw 1vw;
-  border: solid 1px black;
+  border: none;
+  box-shadow: 0vh 0.5vh 1vh gray;
+}
+
+.SwitchStopwatch{
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  border-radius: 1vh;
+  box-shadow: 0vh 0.5vh 1vh gray;
+}
+
+.SwitchTimer{
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  border-radius: 1vh;
+  box-shadow: 0vh 0.5vh 1vh gray;
+}
+
+.SwitchClock{
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  border-radius: 1vh;
+  box-shadow: 0vh 0.5vh 1vh gray;
 }
