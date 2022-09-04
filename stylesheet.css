@@ -89,6 +89,7 @@
 }
 
 .forecast_slider{
+  width: 16.15vw;
   overflow: hidden;
   transition: all 300ms ease-in;
   border: none;
@@ -187,7 +188,7 @@ input:focus::placeholder {
   border-radius: 0vw 0vw 1vw 1vw;
   border: none;
   box-shadow: 0vh 0.5vh 1vh gray;
-  clip-path: inset(-1vh -1vh -1vh -1vh);;
+  clip-path: inset(-2vh -2vh -2vh -2vh);
 }
 
 .SwitchStopwatch{

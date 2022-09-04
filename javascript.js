@@ -253,17 +253,11 @@ function ShowWeather(){
     slider.style.height = `${Forecast.getBoundingClientRect().height}px`;
     Button.style.borderRadius = "0vw 0vw 0vw 0vw";
     Button.style.borderBottom = "none";
-    try{
-      Button.style.clipPath = "inset(-1vh -1vh 0vh -1vh);";
-      Log("hidden box shadow");
-    }
-    catch(error){
-      console.error(error);
-    }
+    Button.style.clipPath = "inset(-2vh -2vh 0vh -2vh)";
+    Log("hidden box shadow");
   } 
   else{
     slider.style.height = "0px";
-    Button.style.clipPath = "inset(-1vh -1vh -1vh -1vh);";
     Log("shown box shadow");
     setTimeout(closeWeather, 300);
   }
@@ -276,6 +270,7 @@ function closeWeather(){
   button.style.borderRadius = "0vw 0vw 1vw 1vw";
   button.style.borderBottom = "none";
   slider.style.border = "none";
+  button.style.clipPath = "inset(-2vh -2vh -2vh -2vh)";
   //button.style.clipPath = "none";
 }
 
