@@ -247,16 +247,24 @@ function ShowWeather(){
   const Forecast = Get("Forecast");
   const Button = Get("ShowWeather");
   const slider = Get('forecast_slider');
-  
+
   if(slider.style.height == "0px"){
     slider.style.border = "none";
     slider.style.height = `${Forecast.getBoundingClientRect().height}px`;
     Button.style.borderRadius = "0vw 0vw 0vw 0vw";
     Button.style.borderBottom = "none";
-    Button.style.boxShadow = "0vh -1vh 1vh gray";
+    try{
+      Button.style.clipPath = "inset(-1vh -1vh 0vh -1vh);";
+      Log("hidden box shadow");
+    }
+    catch(error){
+      console.error(error);
+    }
   } 
   else{
     slider.style.height = "0px";
+    Button.style.clipPath = "inset(-1vh -1vh -1vh -1vh);";
+    Log("shown box shadow");
     setTimeout(closeWeather, 300);
   }
 }
@@ -268,6 +276,7 @@ function closeWeather(){
   button.style.borderRadius = "0vw 0vw 1vw 1vw";
   button.style.borderBottom = "none";
   slider.style.border = "none";
+  //button.style.clipPath = "none";
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
