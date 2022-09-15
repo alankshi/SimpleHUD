@@ -5,7 +5,7 @@
 
 .timing{
   text-align: center;
-  height: 21vh;
+  height: 20vh;
 }
 
 .TimingControls{
@@ -112,7 +112,6 @@
 
 .SearchBarContainer{
   text-align: center;
-
 }
 
 .SearchInput{
@@ -141,6 +140,7 @@
 .timer{
   text-align: center;
   display: none;
+  align-self: center;
 }
 
 .alarms{
@@ -191,7 +191,7 @@ input:focus::placeholder {
   clip-path: inset(-2vh -2vh -2vh -2vh);
 }
 
-.SwitchStopwatch{
+.generic-button{
   background: none;
   border: none;
   outline: none;
@@ -202,24 +202,35 @@ input:focus::placeholder {
   box-shadow: 0vh 0.5vh 1vh gray;
 }
 
-.SwitchTimer{
+.TimerForm{
+  padding: 1vh;
   background: none;
   border: none;
   outline: none;
   padding: 1vh;
-  padding-right: 1vw;
-  padding-left: 1vw;
   border-radius: 1vh;
   box-shadow: 0vh 0.5vh 1vh gray;
+  text-align: center;
+  width: 10vw;
 }
 
-.SwitchClock{
+.generic-input{
   background: none;
   border: none;
   outline: none;
-  padding: 1vh;
-  padding-right: 1vw;
-  padding-left: 1vw;
+  padding: .5vh;
+  width: 2vw;
   border-radius: 1vh;
-  box-shadow: 0vh 0.5vh 1vh gray;
+  text-align: center;
+}
+
+.TimingButtons{
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  justify-content: center;
+}
+
+.tbutton-container{
+  padding-top: 1vh;
 }

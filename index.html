@@ -25,10 +25,10 @@
                 <span class = "seconds" id = "SWMilli">000</span>
               </span>
               <div class = "StopwatchButtons" id = 'StopwatchButtons'>
-                <button class = "SWControl" id = "SWControl" onclick = "ToggleSW()">
+                <button class = "generic-button" id = "SWControl" onclick = "ToggleSW()">
                   Start
                 </button>
-                <button class = "SWReset" id = "SWReset" onclick = "ResetSW()">
+                <button class = "generic-button" id = "SWReset" onclick = "ResetSW()">
                   Reset
                 </button>
               </div>
@@ -39,33 +39,32 @@
                 <span class = "seconds" id = "TimerSeconds">00</span>
               </span>
               <div class = "TimingButtons" id = "TimingButtons">
-                <form class = "TimerForm" id = "TimerForm">
-                  <input type = "text" class = "TimerHours" id = "TimerHours" placeholder = "00"> :
-                  <input type = "text" class = "TimerMins" id = "TimerMins" placeholder = "00"> :
-                  <input type = "text" class = "TimerSecs" id = "TimerSecs" placeholder = "00">
-                </form>
-                <button class = "TimerControl" id = "TimerControl" onclick = "ToggleTimer()">
+                <button class = "generic-button" id = "TimerControl" onclick = "ToggleTimer()">
                   Start
                 </button>
-                <button class = "timer-set" id = "TimerSet" onclick = "set_timer()">
+                <form class = "TimerForm" id = "TimerForm">
+                  <input type = "text" class = "generic-input" id = "TimerHours" placeholder = "00"> :
+                  <input type = "text" class = "generic-input" id = "TimerMins" placeholder = "00"> :
+                  <input type = "text" class = "generic-input" id = "TimerSecs" placeholder = "00">
+                </form>
+                <button class = "generic-button" id = "TimerSet" onclick = "set_timer()">
                   Set
                 </button>
               </div>
             </div>
-            <br>
         </div>
         <div class = "SearchBarContainer" id = "SearchBarContainer">
           <input type = "text" class = "SearchInput" id = "SearchInput" placeholder = "Search...">
         </div>
         <br>
         <div class = "TimingControls" id = "TimingControls">
-          <button class = "SwitchStopwatch" id = "SwitchStopwatch" onclick = "TimingSwitch(0)">
+          <button class = "generic-button" id = "SwitchStopwatch" onclick = "TimingSwitch(0)">
             Stopwatch
           </button>
-          <button class = "SwitchTimer" id = "SwitchTimer" onclick = "TimingSwitch(1)">
+          <button class = "generic-button" id = "SwitchTimer" onclick = "TimingSwitch(1)">
             Timer 
           </button>
-          <button class = "SwitchClock" id = "SwitchClock" onclick = "TimingSwitch(2)">
+          <button class = "generic-button" id = "SwitchClock" onclick = "TimingSwitch(2)">
             Clock
           </button>
         </div>

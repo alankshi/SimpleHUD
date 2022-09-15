@@ -51,7 +51,7 @@ function UpdateDate(){
 
 function GeoSuccess(pos){
     coords = [pos.coords.latitude.toString(), pos.coords.longitude.toString()];
-
+  
     fetch(`https://api.weather.gov/points/${coords[0]},${coords[1]}`, {method : "GET"})
         .then(function(response){
             return response.json();
@@ -62,6 +62,7 @@ function GeoSuccess(pos){
                     return response.json();
                 })
                 .then(function(data){
+                  try{
                     var Forecasts = JSON.parse(JSON.stringify(data.properties.periods));  
                     const n = Forecasts[0]
 
@@ -71,6 +72,16 @@ function GeoSuccess(pos){
                     Get("weather").innerHTML = ShortForecast.join('<br>');
                     Get("DropdownMenu").innerHTML = n.detailedForecast;
                     Get("ShowWeather").innerHTML = `${n.temperature}&deg;F`;
+                  }
+                  catch(error){
+                    Log("Could not get weather data from: ");
+                    Log(`https://api.weather.gov/points/${coords[0]},${coords[1]}`);
+
+                    Get("WeatherIcon").innerHTML = "";
+                    Get("weather").innerHTML = "Could not get weather data";
+                    Get("DropdownMenu").innerHTML = "Could not get weather data";
+                    Get("ShowWeather").innerHTML = `NaN&deg;F`;
+                  }
                 });
 
         });
