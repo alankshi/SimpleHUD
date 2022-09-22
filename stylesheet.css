@@ -1,7 +1,7 @@
 .body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;
-    font-size: 2.25vh;
+    font-size: 3vh;
 }
 
 .timing{
@@ -128,17 +128,17 @@
   border: none;
   outline: none;
   box-shadow: 0vh 0.5vh 1vh gray;
-  padding-left: 3vw;
+  padding-left: 3.75vw;
   padding-right: 0.5vw;
   padding-top: 0.5vh;
   padding-bottom: 0.75vh;
-  width: 34vw;
-  height: 4vh;
+  width: 40vw;
+  height: 6vh;
   background: url("Icons/GoogleLogo.png") no-repeat;
   background-size: contain;
   background-position: 0.5vh;
   font-family: Tahoma;
-  font-size: 2vh;
+  font-size: 2.5vh;
 } 
 
 .stopwatch{
@@ -198,7 +198,8 @@ input:focus::placeholder {
   border: none;
   box-shadow: 0vh 0.5vh 1vh gray;
   clip-path: inset(-2vh -2vh -2vh -2vh);
-  font-size: 1.85vh;
+  font-size: 2.5vh;
+  height: 4vh;
 }
 
 .button{
@@ -210,8 +211,12 @@ input:focus::placeholder {
   padding-left: 1vw;
   border-radius: 1vh;
   box-shadow: 0vh 0.5vh 1vh gray;
-  font-size: 1.85vh;
+  font-size: 2.5vh;
   text-align: center;
+}
+
+.button:active{
+  
 }
 
 .TimerForm{
@@ -248,7 +253,7 @@ input:focus::placeholder {
 .bottom-bar{
   display: flex;
   flex-direction: row;
-  height: 5vh;
+  height: 7vh;
   padding: 1vh;
   box-shadow: 0vh 0vh .5vh gray;
   position: absolute;
@@ -261,7 +266,7 @@ input:focus::placeholder {
 }
 
 .bottom-button{
-  font-size: 3vh;
+  font-size: 4vh;
   border: none;
   background: rgb(220, 220, 220);
   border-radius: 1vh;
@@ -269,24 +274,25 @@ input:focus::placeholder {
 }
 
 .bottom-button--square{
-  height: 5vh;
-  width: 5vh;
+  height: 7vh;
+  width: 7vh;
 }
 
 .bottom-button--strip{
-  width: 14vw;
-  height: 3.5vh;
+  width: 20vw;
+  height: 5vh;
+  border-radius: 5vh;
 }
 
 .panel__bookmark-manager{
   padding-right: 0vh;
-  width: 15vw;
+  width: 21vw;
   position: absolute;
   left: 2vh;
-  bottom: 10vh;
+  bottom: 12vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 30vh;
+  height: 50vh;
   flex-direction: column;
   gap: .5vh;
 }
