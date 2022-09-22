@@ -1,11 +1,20 @@
 .body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;
+    font-size: 2.25vh;
 }
 
 .timing{
   text-align: center;
   height: 20vh;
+}
+
+.date{
+  font-size: 2.25vh;
+}
+
+.M{
+  font-size: 2.25vh;
 }
 
 .TimingControls{
@@ -189,9 +198,10 @@ input:focus::placeholder {
   border: none;
   box-shadow: 0vh 0.5vh 1vh gray;
   clip-path: inset(-2vh -2vh -2vh -2vh);
+  font-size: 1.85vh;
 }
 
-.generic-button{
+.button{
   background: none;
   border: none;
   outline: none;
@@ -200,6 +210,8 @@ input:focus::placeholder {
   padding-left: 1vw;
   border-radius: 1vh;
   box-shadow: 0vh 0.5vh 1vh gray;
+  font-size: 1.85vh;
+  text-align: center;
 }
 
 .TimerForm{
@@ -216,7 +228,7 @@ input:focus::placeholder {
   justify-content: center;
 }
 
-.generic-input{
+.input{
   background: none;
   border: none;
   outline: none;
@@ -233,6 +245,72 @@ input:focus::placeholder {
   justify-content: center;
 }
 
-.tbutton-container{
-  padding-top: 1vh;
+.bottom-bar{
+  display: flex;
+  flex-direction: row;
+  height: 5vh;
+  padding: 1vh;
+  box-shadow: 0vh 0vh .5vh gray;
+  position: absolute;
+  bottom: 0px;
+}
+
+.bottom-bar--left{
+  border-radius: 0vh 1vh 0vh 0vh;
+  left: 0px;
+}
+
+.bottom-button{
+  font-size: 3vh;
+  border: none;
+  background: rgb(220, 220, 220);
+  border-radius: 1vh;
+  text-align: center;
+}
+
+.bottom-button--square{
+  height: 5vh;
+  width: 5vh;
+}
+
+.bottom-button--strip{
+  width: 14vw;
+  height: 3.5vh;
+}
+
+.panel__bookmark-manager{
+  padding-right: 0vh;
+  width: 15vw;
+  position: absolute;
+  left: 2vh;
+  bottom: 10vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 30vh;
+  flex-direction: column;
+  gap: .5vh;
+}
+
+::-webkit-scrollbar{
+  background-color: white;
+  border-radius: 100vh;
+  width: 1vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(220, 220, 220);
+  border-radius: 100vh;
+  border: .75vh solid white;
+}
+
+.panel{
+  border-radius: 1vh;
+  box-shadow: 0vh .5vh 1vh gray;
+  display: none;
+  padding: .75vh;
+}
+
+.panel__bookmark-creator{
+  position: absolute;
+  width: 15vw;
 }

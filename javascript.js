@@ -81,6 +81,8 @@ function GeoSuccess(pos){
                     Get("weather").innerHTML = "Could not get weather data";
                     Get("DropdownMenu").innerHTML = "Could not get weather data";
                     Get("ShowWeather").innerHTML = `NaN&deg;F`;
+
+                    setTimeout(GeoSuccess, 30000);
                   }
                 });
 
@@ -283,6 +285,27 @@ function closeWeather(){
   slider.style.border = "none";
   button.style.clipPath = "inset(-2vh -2vh -2vh -2vh)";
   //button.style.clipPath = "none";
+}
+
+Get("bookmark_manager").style.display = "none";
+
+function showMarkManager(){
+  const manager = Get("bookmark_manager");
+
+  if(manager.style.display == "none"){
+    manager.style.display = "flex";
+  }
+  else{
+    manager.style.display = "none";
+  }
+}
+
+var bookmarks = [];
+
+function addBookmark(){
+  const manager = Get("bookmark_manager");
+
+  manager.innerHTML = "<button class = 'bottom-button bottom-button--strip'>BOOKMARK</button>" + manager.innerHTML;
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {

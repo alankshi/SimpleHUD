@@ -25,10 +25,10 @@
                 <span class = "seconds" id = "SWMilli">000</span>
               </span>
               <div class = "StopwatchButtons" id = 'StopwatchButtons'>
-                <button class = "generic-button" id = "SWControl" onclick = "ToggleSW()">
+                <button class = "button" id = "SWControl" onclick = "ToggleSW()">
                   Start
                 </button>
-                <button class = "generic-button" id = "SWReset" onclick = "ResetSW()">
+                <button class = "button" id = "SWReset" onclick = "ResetSW()">
                   Reset
                 </button>
               </div>
@@ -39,15 +39,15 @@
                 <span class = "seconds" id = "TimerSeconds">00</span>
               </span>
               <div class = "TimingButtons" id = "TimingButtons">
-                <button class = "generic-button" id = "TimerControl" onclick = "ToggleTimer()">
+                <button class = "button" id = "TimerControl" onclick = "ToggleTimer()">
                   Start
                 </button>
                 <form class = "TimerForm" id = "TimerForm">
-                  <input type = "text" class = "generic-input" id = "TimerHours" placeholder = "00"> :
-                  <input type = "text" class = "generic-input" id = "TimerMins" placeholder = "00"> :
-                  <input type = "text" class = "generic-input" id = "TimerSecs" placeholder = "00">
+                  <input type = "text" class = "input" id = "TimerHours" placeholder = "00"> :
+                  <input type = "text" class = "input" id = "TimerMins" placeholder = "00"> :
+                  <input type = "text" class = "input" id = "TimerSecs" placeholder = "00">
                 </form>
-                <button class = "generic-button" id = "TimerSet" onclick = "set_timer()">
+                <button class = "button" id = "TimerSet" onclick = "set_timer()">
                   Set
                 </button>
               </div>
@@ -58,13 +58,13 @@
         </div>
         <br>
         <div class = "TimingControls" id = "TimingControls">
-          <button class = "generic-button" id = "SwitchStopwatch" onclick = "TimingSwitch(0)">
+          <button class = "button" id = "SwitchStopwatch" onclick = "TimingSwitch(0)">
             Stopwatch
           </button>
-          <button class = "generic-button" id = "SwitchTimer" onclick = "TimingSwitch(1)">
+          <button class = "button" id = "SwitchTimer" onclick = "TimingSwitch(1)">
             Timer 
           </button>
-          <button class = "generic-button" id = "SwitchClock" onclick = "TimingSwitch(2)">
+          <button class = "button" id = "SwitchClock" onclick = "TimingSwitch(2)">
             Clock
           </button>
         </div>
@@ -89,7 +89,20 @@
           </div>
         </div>
       </div>
-      <div class = "OptionsContainer" id = "OptionsContainer">
+      <div class = "panel panel__bookmark-manager" id = "bookmark_manager">
+        <button class = "bottom-button bottom-button--strip" id = "add_bookmark" onclick = "addBookmark()">
+          +
+        </button>
+      </div>
+      <div class = "panel panel__bookmark-creator" id = "bookmark_creator">
+        me when i am creating bookmark
+      </div>
+      <div class = "bottom-bar bottom-bar--left" id = "options_container">
+        <div class = "bookmark-bar" id = "bookmark_bar">
+          <button title = "open bookmark manager" class = "bottom-button bottom-button--square" id = "open_mark_manager" onclick = "showMarkManager()">
+            &#43;
+          </button>
+        </div>
       </div>
     </body>
 </html>
