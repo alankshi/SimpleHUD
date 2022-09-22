@@ -1,7 +1,12 @@
+:root{
+  --fsize: 3vh;
+  --tsize: 2.5vh;
+}
+
 .body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;
-    font-size: 3vh;
+    font-size: var(--fsize);
 }
 
 .timing{
@@ -10,11 +15,11 @@
 }
 
 .date{
-  font-size: 2.25vh;
+  font-size: var(--fsize);
 }
 
 .M{
-  font-size: 2.25vh;
+  font-size: var(--fsize);
 }
 
 .TimingControls{
@@ -26,11 +31,11 @@
 }
 
 .MainTime{
-  font-size: 10vh;
+  font-size: 13vh;
 }
 
 .seconds{
-  font-size: 5vh;
+  font-size: 7vh;
 }
 
 .ShortForecast{
@@ -138,7 +143,7 @@
   background-size: contain;
   background-position: 0.5vh;
   font-family: Tahoma;
-  font-size: 2.5vh;
+  font-size: var(--tsize);
 } 
 
 .stopwatch{
@@ -198,7 +203,7 @@ input:focus::placeholder {
   border: none;
   box-shadow: 0vh 0.5vh 1vh gray;
   clip-path: inset(-2vh -2vh -2vh -2vh);
-  font-size: 2.5vh;
+  font-size: var(--tsize);
   height: 4vh;
 }
 
@@ -211,7 +216,7 @@ input:focus::placeholder {
   padding-left: 1vw;
   border-radius: 1vh;
   box-shadow: 0vh 0.5vh 1vh gray;
-  font-size: 2.5vh;
+  font-size: var(--tsize);
   text-align: center;
 }
 
@@ -253,7 +258,7 @@ input:focus::placeholder {
 .bottom-bar{
   display: flex;
   flex-direction: row;
-  height: 7vh;
+  height: 8vh;
   padding: 1vh;
   box-shadow: 0vh 0vh .5vh gray;
   position: absolute;
@@ -274,8 +279,8 @@ input:focus::placeholder {
 }
 
 .bottom-button--square{
-  height: 7vh;
-  width: 7vh;
+  height: 8vh;
+  width: 8vh;
 }
 
 .bottom-button--strip{
