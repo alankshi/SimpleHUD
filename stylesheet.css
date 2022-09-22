@@ -246,6 +246,7 @@ input:focus::placeholder {
   width: 2vw;
   border-radius: 1vh;
   text-align: center;
+  font-size: var(--tsize);
 }
 
 .TimingButtons{
@@ -293,7 +294,7 @@ input:focus::placeholder {
   padding-right: 0vh;
   width: 21vw;
   position: absolute;
-  left: 2vh;
+  left: 1vw;
   bottom: 12vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -317,11 +318,35 @@ input:focus::placeholder {
 .panel{
   border-radius: 1vh;
   box-shadow: 0vh .5vh 1vh gray;
-  display: none;
+  display: flex;
   padding: .75vh;
 }
 
 .panel__bookmark-creator{
   position: absolute;
-  width: 15vw;
+  width: 20vw;
+  left: 1vw;
+  bottom: 66vh;
+  flex-direction: column;
+}
+
+.input--left{
+  text-align: left;
+}
+
+.input--bookmark{
+  width: 19vw;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  border-radius: 0px;
+  padding-top: 1vh;
+}
+
+.bottom-button__create-mark{
+  font-size: var(--tsize);
+  height: 4vh;
+  width: 20vw;
+}
+
+.spacer-div{
+  height: 1.5vh;
 }

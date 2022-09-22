@@ -90,14 +90,22 @@
           </div>
         </div>
       </div>
-      <div class = "panel panel__bookmark-manager" id = "bookmark_manager">
-        <button class = "bottom-button bottom-button--strip" id = "add_bookmark" onclick = "addBookmark()">
-          +
-        </button>
-      </div>
-      <div class = "panel panel__bookmark-creator" id = "bookmark_creator">
-        me when i am creating bookmark
-      </div>
+      <div id = "bookmark_panels">
+        <div class = "panel panel__bookmark-manager" id = "bookmark_manager">
+          <button class = "bottom-button bottom-button--strip" id = "add_bookmark" onclick = "openMarkCreator()">
+            +
+          </button>
+        </div>
+        <div class = "panel panel__bookmark-creator" id = "bookmark_creator">
+          <input type = "text" class = "input input--left input--bookmark" id = "bookmark_name" placeholder = "bookmark name">
+          <input type = "text" class = "input input--left input--bookmark" id = "bookmark_url" placeholder = "bookmark url">
+          <input type = "text" class = "input input--left input--bookmark" id = "bookmark_color" placeholder = "bookmark color">
+          <div class = "spacer-div"></div>
+          <button class = "bottom-button bottom-button--strip bottom-button__create-mark" id = "create_bookmark" onclick = "createMark()">
+            create bookmark
+          </button>
+        </div>
+      </div> 
       <div class = "bottom-bar bottom-bar--left" id = "options_container">
         <div class = "bookmark-bar" id = "bookmark_bar">
           <button title = "open bookmark manager" class = "bottom-button bottom-button--square" id = "open_mark_manager" onclick = "showMarkManager()">

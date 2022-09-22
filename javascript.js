@@ -287,25 +287,53 @@ function closeWeather(){
   //button.style.clipPath = "none";
 }
 
-Get("bookmark_manager").style.display = "none";
+Get("bookmark_panels").style.display = "none";
 
 function showMarkManager(){
-  const manager = Get("bookmark_manager");
+  const panels = Get("bookmark_panels");
 
-  if(manager.style.display == "none"){
-    manager.style.display = "flex";
+  if(panels.style.display == "none"){
+    panels.style.display = "block";
   }
   else{
-    manager.style.display = "none";
+    panels.style.display = "none";
   }
 }
 
 var bookmarks = [];
+Get("bookmark_creator").style.display = "none";
 
-function addBookmark(){
-  const manager = Get("bookmark_manager");
+function openMarkCreator(){
+  const creator = Get("bookmark_creator");
 
-  manager.innerHTML = "<button class = 'bottom-button bottom-button--strip'>BOOKMARK</button>" + manager.innerHTML;
+  if(creator.style.display == "none"){
+    creator.style.display = "flex";
+  }
+  else{
+    creator.style.display = "none";
+  }
+}
+
+class Bookmark{
+  constructor(name, href, color){
+    this.name = name;
+    this.href = href;
+    this.color = color;
+  }
+
+  getManager(){
+    //return html for mark inside bookmark manager
+  }
+
+  getMark(){
+    //return html for mark in bottom bookmark bar
+  }
+
+  set(name, href, color){
+    this.name = name;
+    this.href = href;
+    this.color = color;
+  }
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
