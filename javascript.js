@@ -196,8 +196,8 @@ function ToggleTimer(){
   const e = Get("TimerControl");
 
   if(TimerActive){
-    if(TimerTime == 0){
-      TimerTime = 1000 * (3600 * InputInt(Get("TimerHours").value) + 60 * InputInt(Get("TimerMins").value) + InputInt(Get("TimerSecs").value));
+    if(TimerTime <= 0){
+      set_timer();
     }
 
     e.innerHTML = "Stop";
@@ -210,7 +210,6 @@ function ToggleTimer(){
 
   TimerTime = TimerTime - (DObj().getTime() - TimerStart);
   TimerActive = false;
-  Log("test");
   e.innerHTML = "Start";
   clearInterval(CurrTimer);
 }
