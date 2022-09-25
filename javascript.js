@@ -335,6 +335,37 @@ class Bookmark{
   }
 }
 
+function val(elm){return elm.value;}
+
+function createMark(){
+  const input = [Get("bookmark_name"), Get("bookmark_url"), Get("bookmark_color")];
+  const vars = ["--c__name", "--c__url", "--c__color"];
+
+  if(!input.map(val).includes('')){
+    bookmarks.push(new Bookmark(input[0].value, input[1].value, input[2].value));
+    
+    for(const elm of input){elm.value = '';}
+
+    for(let i = 0; i < 3; i++){
+      input[i].style.setProperty(vars[i], "#8e8e8e");
+      input[i].style.setProperty(vars[i], "rgb(150, 150, 150)");
+    }
+
+    return;
+  }
+
+  for(let i = 0; i < 3; i++){
+    if(input[i].value == ''){
+      input[i].style.setProperty(vars[i], "red");
+      input[i].style.borderColor = "red";
+    }
+    else{
+      input[i].style.borderColor = "rgb(150, 150, 150)";
+      input[i].style.setProperty(vars[i], "#8e8e8e");
+    }
+  }
+}
+
 Get("SearchInput").addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
         Search();

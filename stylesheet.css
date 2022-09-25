@@ -1,6 +1,9 @@
 :root{
   --fsize: 3vh;
   --tsize: 2.5vh;
+  --c__name: #8e8e8e;
+  --c__url: #8e8e8e;
+  --c__color: #8e8e8e;
 }
 
 .body{
@@ -349,4 +352,16 @@ input:focus::placeholder {
 
 .spacer-div{
   height: 1.5vh;
+}
+
+.input--bookmark__name::placeholder{
+  color: var(--c__name);
+}
+
+.input--bookmark__url::placeholder{
+  color: var(--c__url);
+}
+
+.input--bookmark__color::placeholder{
+  color: var(--c__color);
 }
