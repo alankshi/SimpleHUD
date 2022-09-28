@@ -365,3 +365,18 @@ input:focus::placeholder {
 .input--bookmark__color::placeholder{
   color: var(--c__color);
 }
+
+.manager-bookmark{
+  display: flex;
+  text-align: left;
+  align-items: center;
+  font-size: var(--fsize);
+}
+
+.clear-button{
+  text-align: right;
+  width: inherit;
+  background: none;
+  outline: none;
+  border: none;
+}
