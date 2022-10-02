@@ -314,14 +314,19 @@ function openMarkCreator(){
 }
 
 class Bookmark{
-  constructor(name, href, color){
+  constructor(name, href, color, id){
     this.name = name;
     this.href = href;
     this.color = color;
+    this.id = id;
   }
 
   getManager(){
-    //return html for mark inside bookmark manager
+    const div = `<div class = "bottom-button bottom-button--strip manager-bookmark" style = "background-color: ${this.color};">`;
+    const markName = `&nbsp${this.name}`;
+    const button = `<button class = "clear-button" onclick = "delBookmark(${this.id})">del&nbsp&nbsp</button>`;
+    
+    return div + markName + button + "</div>";
   }
 
   getMark(){
@@ -337,18 +342,23 @@ class Bookmark{
 
 function val(elm){return elm.value;}
 
+var currID = 0;
+
 function createMark(){
   const input = [Get("bookmark_name"), Get("bookmark_url"), Get("bookmark_color")];
   const vars = ["--c__name", "--c__url", "--c__color"];
 
   if(!input.map(val).includes('')){
-    bookmarks.push(new Bookmark(input[0].value, input[1].value, input[2].value));
+    const newMark = new Bookmark(input[0].value, input[1].value, input[2].value, currID);
+    bookmarks.push(newMark);
+    Get("bookmark_manager").innerHTML = newMark.getManager() + Get("bookmark_manager").innerHTML;
+    currID += 1;
     
     for(const elm of input){elm.value = '';}
 
     for(let i = 0; i < 3; i++){
-      input[i].style.setProperty(vars[i], "#8e8e8e");
       input[i].style.setProperty(vars[i], "rgb(150, 150, 150)");
+      input[i].style.borderColor = "rgb(150, 150, 150)";
     }
 
     return;
