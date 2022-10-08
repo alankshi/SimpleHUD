@@ -267,6 +267,7 @@ input:focus::placeholder {
   box-shadow: 0vh 0vh .5vh gray;
   position: absolute;
   bottom: 0px;
+  gap: 1vh
 }
 
 .bottom-bar--left{
@@ -371,6 +372,8 @@ input:focus::placeholder {
   text-align: left;
   align-items: center;
   font-size: var(--fsize);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .clear-button{
@@ -379,4 +382,11 @@ input:focus::placeholder {
   background: none;
   outline: none;
   border: none;
+}
+
+.bottom-bookmark{
+  border: none;
+  border-radius: 1vh;
+  height: 8vh;
+  min-width: 8vh;
 }

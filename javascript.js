@@ -316,21 +316,25 @@ function openMarkCreator(){
 class Bookmark{
   constructor(name, href, color, id){
     this.name = name;
-    this.href = href;
-    this.color = color;
+    this.href = href.includes("http") ? href : "http://" + href;
+    this.color = color.split(" ").map(Number);
     this.id = id;
+
+    const maxColor = Math.max(...[...new Set(this.color)]);
+    this.textColor = maxColor < 200 ? "white" : "black";
+    this.border = maxColor < 200 ? "none" : "solid rgb(220, 220, 220) 1px";
   }
 
   getManager(){
-    const div = `<div class = "bottom-button bottom-button--strip manager-bookmark" style = "background-color: ${this.color};">`;
-    const markName = `&nbsp${this.name}`;
-    const button = `<button class = "clear-button" onclick = "delBookmark(${this.id})">del&nbsp&nbsp</button>`;
+    const div = `<div class = "bottom-button bottom-button--strip manager-bookmark" style = "border: ${this.border}; background-color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]}); color: ${this.textColor};">`;
+    const markName = `<span style = "font-size: inherit; overflow: hidden; text-overflow: ellipsis; width: 50vw">&nbsp${this.name}</span>`;
+    const button = `<button style = "color: ${this.textColor};" class = "clear-button" onclick = "delBookmark(${this.id})">del&nbsp&nbsp</button>`;
     
     return div + markName + button + "</div>";
   }
 
   getMark(){
-    //return html for mark in bottom bookmark bar
+    return `<button class = "bottom-bookmark" style = "background-color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]}); color:${this.textColor};" onclick = "window.open('${this.href}', '_blank').focus()">${this.name}</button>`
   }
 
   set(name, href, color){
@@ -352,6 +356,7 @@ function createMark(){
     const newMark = new Bookmark(input[0].value, input[1].value, input[2].value, currID);
     bookmarks.push(newMark);
     Get("bookmark_manager").innerHTML = newMark.getManager() + Get("bookmark_manager").innerHTML;
+    Get("bookmark_bar").innerHTML = newMark.getMark() + Get("bookmark_bar").innerHTML;
     currID += 1;
     
     for(const elm of input){elm.value = '';}
