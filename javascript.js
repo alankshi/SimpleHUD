@@ -381,6 +381,36 @@ function createMark(){
   }
 }
 
+function delBookmark(id){
+
+
+  for(var i = 0; i < bookmarks.length; i++){
+    if(bookmarks[i].id == id){
+      bookmarks.splice(i, 1);
+      break;
+    }
+  }
+
+  reconstructMarks();
+  return;
+}
+
+function reconstructMarks(){
+  var barHTML = '';
+  var managerHTML = '';
+
+  for(const mark of bookmarks){
+    barHTML += mark.getMark();
+    managerHTML += mark.getManager();
+  }
+
+  barHTML += `<button title = "open bookmark manager" class = "bottom-button bottom-button--square" id = "open_mark_manager" onclick = "showMarkManager()">&#43;</button>`;
+  managerHTML += `<button title = "open bookmark creator" class = "bottom-button bottom-button--strip" id = "add_bookmark" onclick = "openMarkCreator()">+</button>`;
+
+  Get("bookmark_bar").innerHTML = barHTML;
+  Get("bookmark_manager").innerHTML = managerHTML;
+}
+
 Get("SearchInput").addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
         Search();
