@@ -70,23 +70,33 @@
           </button>
         </div>
       </div>
-      <div class = "WeatherContainer" id = "WeatherContainer">
-        <button class = "ShowWeather" id = "ShowWeather" onclick = "ShowWeather()"></button>
-        <div class = "forecast_slider" id = "forecast_slider">
-          <div class = "Forecast" id = "Forecast">
-            <div class = "ShortForecast" id = "ShortForecast">
-                <div class = "weather" id = "weather"></div>
-                <div class = "WeatherIcon" id = "WeatherIcon"></div>
+      <div class = "top-bar" id = "top_bar">
+        <div class = "top-container" id = "WeatherContainer">
+          <button class = "top-button" id = "ShowWeather" onclick = "ShowWeather()"></button>
+          <div class = "forecast_slider" id = "forecast_slider">
+            <div class = "Forecast" id = "Forecast">
+              <div class = "ShortForecast" id = "ShortForecast">
+                  <div class = "weather" id = "weather"></div>
+                  <div class = "WeatherIcon" id = "WeatherIcon"></div>
+              </div>
+              <div class = "DropdownContainer" id = "DropdownContainer">
+                  <button class = "dropdown" id = "dropdown" onclick = "ShowWeatherDropdownMenu()">
+                      <div class = "DropdownArrow" id = "DropdownArrow"></div>
+                  </button>
+                  <div class = "DropdownSlider" id = "DropdownSlider">
+                    <div class = "DropdownMenu" id = "DropdownMenu"></div>
+                  </div>
+              </div>
+              <div class = "FutureWeather" id = "FutureWeather"></div>
             </div>
-            <div class = "DropdownContainer" id = "DropdownContainer">
-                <button class = "dropdown" id = "dropdown" onclick = "ShowWeatherDropdownMenu()">
-                    <div class = "DropdownArrow" id = "DropdownArrow"></div>
-                </button>
-                <div class = "DropdownSlider" id = "DropdownSlider">
-                  <div class = "DropdownMenu" id = "DropdownMenu"></div>
-                </div>
-            </div>
-            <div class = "FutureWeather" id = "FutureWeather"></div>
+          </div>
+        </div>
+        <div id = "dictionary_container" class = "top-container">
+          <button class = 'top-button' id = "show_dictionary">
+            Dictionary
+          </button>
+          <div id = "dictionary_panel">
+            <input class = "input input--left" id = "dictionary_search" placholder = "Serach a word...">
           </div>
         </div>
       </div>

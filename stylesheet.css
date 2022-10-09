@@ -81,14 +81,11 @@
   gap: 0.5vh;
 }
 
-.WeatherContainer{
+.top-container{
   align-self: center;
   width: 17vw;
   text-align: center;
   align-items: center;
-  position: absolute;
-  top: 0vh;
-  right: 0vh;
   display: flex;
   flex-direction: column;
 }
@@ -195,7 +192,7 @@ input:focus::placeholder {
   text-align: center;
 }
 
-.ShowWeather{
+.top-button{
   width: 16.15vw;
   background: white;
   border-top: none;
@@ -390,3 +387,14 @@ input:focus::placeholder {
   height: 8vh;
   min-width: 8vh;
 }
+
+.top-bar{
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  align-items: top;
+  gap: 1vw;
+}
+
