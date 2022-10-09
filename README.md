@@ -2,6 +2,11 @@
 A simple, minimalistic web homepage including timing utilities, weather, and a Google search bar
 
 # User Guide
+**Bookmarks**\
+Clicking on the plus sign on the bottom left will open the bookmarks manager\
+Clicking on the plus sign in the bookmarks manager will open the bookmarks creator\
+There, bookmarks can be created. Bookmark colors are formatted with r, g, and b values separated by spaces. Example: 255 255 255
+
 **Weather**\
 Currently weather only works in the US
 Allowing location will display the weather in your area along with a more detailed description in a dropdown menu
