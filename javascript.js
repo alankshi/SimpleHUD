@@ -53,9 +53,7 @@ function GeoSuccess(pos){
     coords = [pos.coords.latitude.toString(), pos.coords.longitude.toString()];
   
     fetch(`https://api.weather.gov/points/${coords[0]},${coords[1]}`, {method : "GET"})
-        .then(function(response){
-            return response.json();
-        })
+        .then(response => response.json())
         .then(function(data){
             fetch(JSON.stringify(data.properties.forecast).replace('"', '').replace('"', ''))
                 .then(function(response){
@@ -411,10 +409,34 @@ function reconstructMarks(){
   Get("bookmark_manager").innerHTML = managerHTML;
 }
 
+function dictSearch(){
+  Get("definitions").innerHTML = "loading...";
+
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${Get("dictionary_search").value}`)
+    .then(response => response.json())
+    .then(function(data){
+      Get("definitions").innerHTML = "";
+
+      const definitions = data[0].meanings[0].definitions;
+
+      for(const def of definitions){
+        Get("definitions").innerHTML += `<li>${def.definition}</li>`;
+      }
+
+      Log(data);
+    });
+}
+
 Get("SearchInput").addEventListener("keydown", function (e) {
-    if (e.code === "Enter") {
-        Search();
-    }
+  if (e.code === "Enter") {
+      Search();
+  }
+});
+
+Get("dictionary_search").addEventListener("keydown", function (e) {
+  if (e.code === "Enter") {
+      dictSearch();
+  }
 });
 
 UpdateWeather();

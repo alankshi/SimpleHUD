@@ -86,8 +86,8 @@
   width: 17vw;
   text-align: center;
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: inline-grid;
+  background-color: white;
 }
 
 .Forecast{
@@ -335,10 +335,13 @@ input:focus::placeholder {
   text-align: left;
 }
 
-.input--bookmark{
-  width: 19vw;
+.input--underline{
   border-bottom: 1px solid rgb(150, 150, 150);
   border-radius: 0px;
+}
+
+.input--bookmark{
+  width: 19vw;
   padding-top: 1vh;
 }
 
@@ -389,12 +392,23 @@ input:focus::placeholder {
 }
 
 .top-bar{
-  display: flex;
-  flex-direction: row-reverse;
+  display: table-row;
   position: absolute;
   top: 0px;
   right: 0px;
-  align-items: top;
-  gap: 1vw;
+  flex-direction: row;
 }
 
+.input--dict{
+  width: 13vw;
+}
+
+.list-small{
+  text-align: left;
+  font-size: small;
+}
+
+.top-panel{
+  max-height: 50vh;
+  overflow: scroll;
+}

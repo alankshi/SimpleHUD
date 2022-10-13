@@ -71,6 +71,16 @@
         </div>
       </div>
       <div class = "top-bar" id = "top_bar">
+        <div id = "dictionary_container" class = "top-container">
+          <button class = 'top-button' id = "show_dictionary">
+            Dictionary
+          </button>
+          <div id = "dictionary_panel" class = "top-panel">
+            <input placeholder = "Search a word..." class = "input input--left input--underline input--dict" id = "dictionary_search">
+            <br>
+            <ul class = "list-small" id = "definitions"></ul>
+          </div>
+        </div>
         <div class = "top-container" id = "WeatherContainer">
           <button class = "top-button" id = "ShowWeather" onclick = "ShowWeather()"></button>
           <div class = "forecast_slider" id = "forecast_slider">
@@ -91,14 +101,6 @@
             </div>
           </div>
         </div>
-        <div id = "dictionary_container" class = "top-container">
-          <button class = 'top-button' id = "show_dictionary">
-            Dictionary
-          </button>
-          <div id = "dictionary_panel">
-            <input class = "input input--left" id = "dictionary_search" placholder = "Serach a word...">
-          </div>
-        </div>
       </div>
       <div id = "bookmark_panels">
         <div class = "panel panel__bookmark-manager" id = "bookmark_manager">
@@ -107,9 +109,9 @@
           </button>
         </div>
         <div class = "panel panel__bookmark-creator" id = "bookmark_creator">
-          <input type = "text" class = "input input--left input--bookmark input--bookmark__name" id = "bookmark_name" placeholder = "bookmark name">
-          <input type = "text" class = "input input--left input--bookmark input--bookmark__url" id = "bookmark_url" placeholder = "bookmark url">
-          <input type = "text" class = "input input--left input--bookmark input--bookmark__color" id = "bookmark_color" placeholder = "bookmark color">
+          <input type = "text" class = "input input--left input--underline input--bookmark input--bookmark__name" id = "bookmark_name" placeholder = "bookmark name">
+          <input type = "text" class = "input input--left input--underline input--bookmark input--bookmark__url" id = "bookmark_url" placeholder = "bookmark url">
+          <input type = "text" class = "input input--left input--underline input--bookmark input--bookmark__color" id = "bookmark_color" placeholder = "bookmark color">
           <div class = "spacer-div"></div>
           <button class = "bottom-button bottom-button--strip bottom-button__create-mark" id = "create_bookmark" onclick = "createMark()">
             create bookmark
