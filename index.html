@@ -72,13 +72,14 @@
       </div>
       <div class = "top-bar" id = "top_bar">
         <div id = "dictionary_container" class = "top-container">
-          <button class = 'top-button' id = "show_dictionary">
+          <button class = 'top-button' id = "show_dictionary" onclick = "showDictionary()">
             Dictionary
           </button>
           <div id = "dictionary_panel" class = "top-panel">
             <input placeholder = "Search a word..." class = "input input--left input--underline input--dict" id = "dictionary_search">
             <br>
-            <ul class = "list-small" id = "definitions"></ul>
+            <div class = "spacer-div"></div>
+            <div id = "definitions"></div>
           </div>
         </div>
         <div class = "top-container" id = "WeatherContainer">

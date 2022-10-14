@@ -411,4 +411,6 @@ input:focus::placeholder {
 .top-panel{
   max-height: 50vh;
   overflow: scroll;
+  text-align: left;
+  display: block;
 }

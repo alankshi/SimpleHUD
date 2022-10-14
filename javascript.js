@@ -417,14 +417,31 @@ function dictSearch(){
     .then(function(data){
       Get("definitions").innerHTML = "";
 
-      const definitions = data[0].meanings[0].definitions;
+      const meanings = data[0].meanings;
 
-      for(const def of definitions){
-        Get("definitions").innerHTML += `<li>${def.definition}</li>`;
+      Get("definitions").innerHTML += data[0].word + "<br>";
+      for(var i = 0; i < meanings.length; i++){
+        Get("definitions").innerHTML += `<b style = "font-size: medium">${meanings[i].partOfSpeech}</b><ul class = "list-small" id = "${i}"></ul>`;
+
+        for(def of meanings[i].definitions){
+          Get(i.toString()).innerHTML += `<li>${def.definition}</li>`;
+        }
       }
 
       Log(data);
     });
+}
+
+Get("dictionary_panel").style.display = "none";
+function showDictionary(){
+  const panel = Get("dictionary_panel");
+
+  if(panel.style.display == "none"){
+    panel.style.display = "block";
+    return;
+  }
+  
+  panel.style.display = "none";
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
