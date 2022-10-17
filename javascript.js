@@ -411,18 +411,22 @@ function reconstructMarks(){
 function dictSearch(){
   Get("definitions").innerHTML = "loading...";
 
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${Get("dictionary_search").value}`)
+  var word = Get("dictionary_search").value;
+  var googleLink = `<a class = "dict-link" href = "https://www.google.com/search?q=define+${word}" target = "_blank">Google</a>`;
+  var websterLink = `<a class = "dict-link" href = "https://www.merriam-webster.com/dictionary/${word}" target = "_blank">M-W</a>`;
+
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
     .then(response => response.json())
     .then(function(data){
       if(data.title == "No Definitions Found"){
-        Get("definitions").innerHTML = "word not found";
+        Get("definitions").innerHTML = `word not found<br>${googleLink}${websterLink}`;
       }
       else{
         Get("definitions").innerHTML = "";
 
         const meanings = data[0].meanings;
 
-        Get("definitions").innerHTML += `${data[0].word}<button onclick = 'Search("define+${data[0].word}")'>Google</button><br>`;
+        Get("definitions").innerHTML += `${word}${googleLink}${websterLink}<br>`;
         for(var i = 0; i < meanings.length; i++){
           Get("definitions").innerHTML += `<b style = "font-size: medium">${meanings[i].partOfSpeech}</b><ul class = "list-small" id = "${i}"></ul>`;
 

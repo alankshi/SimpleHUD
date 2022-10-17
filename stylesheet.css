@@ -415,7 +415,7 @@ input:focus::placeholder {
   display: block;
 }
 
-.button-link{
-  background: none;
-  border: none;
+.dict-link{
+  font-size: small;
+  padding-left: 1vw;
 }
