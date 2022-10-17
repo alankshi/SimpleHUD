@@ -118,8 +118,7 @@ function ShowWeatherDropdownMenu(){
     }
 }
 
-function Search(){
-  var term = Get("SearchInput").value;
+function Search(term = Get("SearchInput").value){
   Get("SearchInput").value = '';
   term.replaceAll(" ", '+')
   window.open(`https://www.google.com/search?q=${term}`);
@@ -415,20 +414,25 @@ function dictSearch(){
   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${Get("dictionary_search").value}`)
     .then(response => response.json())
     .then(function(data){
-      Get("definitions").innerHTML = "";
-
-      const meanings = data[0].meanings;
-
-      Get("definitions").innerHTML += data[0].word + "<br>";
-      for(var i = 0; i < meanings.length; i++){
-        Get("definitions").innerHTML += `<b style = "font-size: medium">${meanings[i].partOfSpeech}</b><ul class = "list-small" id = "${i}"></ul>`;
-
-        for(def of meanings[i].definitions){
-          Get(i.toString()).innerHTML += `<li>${def.definition}</li>`;
-        }
+      if(data.title == "No Definitions Found"){
+        Get("definitions").innerHTML = "word not found";
       }
+      else{
+        Get("definitions").innerHTML = "";
 
-      Log(data);
+        const meanings = data[0].meanings;
+
+        Get("definitions").innerHTML += `${data[0].word}<button onclick = 'Search("define+${data[0].word}")'>Google</button><br>`;
+        for(var i = 0; i < meanings.length; i++){
+          Get("definitions").innerHTML += `<b style = "font-size: medium">${meanings[i].partOfSpeech}</b><ul class = "list-small" id = "${i}"></ul>`;
+
+          for(def of meanings[i].definitions){
+            Get(i.toString()).innerHTML += `<li>${def.definition}</li>`;
+          }
+        }
+
+        Log(data);
+      }
     });
 }
 
