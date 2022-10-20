@@ -72,19 +72,21 @@
       </div>
       <div class = "top-bar" id = "top_bar">
         <div id = "dictionary_container" class = "top-container">
-          <button class = 'top-button' id = "show_dictionary" onclick = "showDictionary()">
+          <button class = 'top-button' id = "show_dictionary" onclick = "slidePanel('dictionary_panel', 'show_dictionary', 'dictionary_slider')">
             Dictionary
           </button>
-          <div id = "dictionary_panel" class = "top-panel">
-            <input placeholder = "Search a word..." class = "input input--left input--underline input--dict" id = "dictionary_search">
-            <br>
-            <div class = "spacer-div"></div>
-            <div id = "definitions"></div>
+          <div class = "slider" id = "dictionary_slider">
+            <div id = "dictionary_panel" class = "top-panel top-panel--dictionary">
+              <input placeholder = "Search a word..." class = "input input--left input--underline input--dict" id = "dictionary_search">
+              <br>
+              <div class = "spacer-div"></div>
+              <div id = "definitions"></div>
+            </div>
           </div>
         </div>
         <div class = "top-container" id = "WeatherContainer">
           <button class = "top-button" id = "ShowWeather" onclick = "ShowWeather()"></button>
-          <div class = "forecast_slider" id = "forecast_slider">
+          <div class = "slider" id = "forecast_slider">
             <div class = "Forecast" id = "Forecast">
               <div class = "ShortForecast" id = "ShortForecast">
                   <div class = "weather" id = "weather"></div>

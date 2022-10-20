@@ -251,6 +251,8 @@ function update_timer(t){
 
 Get("forecast_slider").style.height = "0px"; 
 Get("forecast_slider").style.border = "none";
+Get("dictionary_slider").style.height = "0px";
+Get("dictionary_slider").style.border = "none";
 
 function ShowWeather(){
   const Forecast = Get("Forecast");
@@ -263,13 +265,39 @@ function ShowWeather(){
     Button.style.borderRadius = "0vw 0vw 0vw 0vw";
     Button.style.borderBottom = "none";
     Button.style.clipPath = "inset(-2vh -2vh 0vh -2vh)";
-    Log("hidden box shadow");
   } 
   else{
     slider.style.height = "0px";
-    Log("shown box shadow");
     setTimeout(closeWeather, 300);
   }
+}
+
+function slidePanel(panelID, buttonID, sliderID){
+  const panel = Get(panelID);
+  const button = Get(buttonID);
+  const slider = Get(sliderID);
+
+  if(slider.style.height == "0px"){
+    slider.style.border = "none";
+    slider.style.height = `${panel.getBoundingClientRect().height}px`;
+    button.style.borderRadius = "0vw 0vw 0vw 0vw";
+    button.style.borderBottom = "none";
+    button.style.clipPath = "inset(-2vh -2vh 0vh -2vh)";
+  } 
+  else{
+    slider.style.height = "0px";
+    setTimeout(closePanel, 300, buttonID, sliderID);
+  }
+}
+
+function closePanel(buttonID, sliderID){
+  const button = Get(buttonID);
+  const slider = Get(sliderID);
+  
+  button.style.borderRadius = "0vw 0vw 1vw 1vw";
+  button.style.borderBottom = "none";
+  slider.style.border = "none";
+  button.style.clipPath = "inset(-2vh -2vh -2vh -2vh)";
 }
 
 function closeWeather(){
@@ -422,6 +450,7 @@ function dictSearch(){
         Get("definitions").innerHTML = `word not found<br>${googleLink}${websterLink}`;
       }
       else{
+        Get("dictionary_slider").style.height = '50vh';
         Get("definitions").innerHTML = "";
 
         const meanings = data[0].meanings;
@@ -434,22 +463,9 @@ function dictSearch(){
             Get(i.toString()).innerHTML += `<li>${def.definition}</li>`;
           }
         }
-
         Log(data);
       }
     });
-}
-
-Get("dictionary_panel").style.display = "none";
-function showDictionary(){
-  const panel = Get("dictionary_panel");
-
-  if(panel.style.display == "none"){
-    panel.style.display = "block";
-    return;
-  }
-  
-  panel.style.display = "none";
 }
 
 Get("SearchInput").addEventListener("keydown", function (e) {
