@@ -272,7 +272,7 @@ function ShowWeather(){
   }
 }
 
-function slidePanel(panelID, buttonID, sliderID){
+function slidePanel(panelID, buttonID, sliderID, inputID = null){
   const panel = Get(panelID);
   const button = Get(buttonID);
   const slider = Get(sliderID);
@@ -283,6 +283,11 @@ function slidePanel(panelID, buttonID, sliderID){
     button.style.borderRadius = "0vw 0vw 0vw 0vw";
     button.style.borderBottom = "none";
     button.style.clipPath = "inset(-2vh -2vh 0vh -2vh)";
+
+    if(inputID != null){
+      Get(inputID).focus();
+      Get(inputID)[0].setSelectionRange(0, Get(inputID).val().length * 2, "forward");
+    }
   } 
   else{
     slider.style.height = "0px";
@@ -450,7 +455,7 @@ function dictSearch(){
         Get("definitions").innerHTML = `word not found<br>${googleLink}${websterLink}`;
       }
       else{
-        Get("dictionary_slider").style.height = '50vh';
+        Get("dictionary_slider").style.height = "50vh";
         Get("definitions").innerHTML = "";
 
         const meanings = data[0].meanings;

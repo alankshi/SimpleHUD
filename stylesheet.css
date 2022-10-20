@@ -59,6 +59,7 @@
   display: flex;
   justify-content: center;
   height: 4vh;
+  outline: none !important;
   padding: 0.75vh;
 }
 
@@ -111,6 +112,7 @@
   border-top: none;
   border-radius: 0vw 0vw 1vw 1vw;
   box-shadow: 0vh 0.5vh 1vh gray;
+  max-height: 50vh;
 }
 
 .DropdownArrow{
@@ -205,6 +207,7 @@ input:focus::placeholder {
   clip-path: inset(-2vh -2vh -2vh -2vh);
   font-size: var(--tsize);
   height: 4vh;
+  outline: none !important;
 }
 
 .button{
@@ -218,6 +221,7 @@ input:focus::placeholder {
   box-shadow: 0vh 0.5vh 1vh gray;
   font-size: var(--tsize);
   text-align: center;
+  outline: none !important;
 }
 
 .button:active{
@@ -278,6 +282,7 @@ input:focus::placeholder {
   background: rgb(220, 220, 220);
   border-radius: 1vh;
   text-align: center;
+  outline: none !important;
 }
 
 .bottom-button--square{
