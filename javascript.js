@@ -286,7 +286,7 @@ function slidePanel(panelID, buttonID, sliderID, inputID = null){
 
     if(inputID != null){
       Get(inputID).focus();
-      Get(inputID)[0].setSelectionRange(0, Get(inputID).val().length * 2, "forward");
+      Get(inputID).setSelectionRange(0, Get(inputID).value.length * 2, "forward");
     }
   } 
   else{
